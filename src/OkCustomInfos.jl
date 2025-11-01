@@ -28,7 +28,9 @@ function infoc(msg...; prefix="Info: ", prefix_color=:cyan)
     printstyled(prefix; color=prefix_color, bold=true)
 
     # 2. Format the main message using the passed arguments
-    s = @sprintf(msg[1], msg[2:end]...)
+    # - @sprintf is a macro that requires a literal format string at compile time
+    # - Printf.format is a function that can work with runtime format strings by first creating a Printf.Format object
+    s = Printf.format(Printf.Format(msg[1]), msg[2:end]...)
 
     # 3. Print the message
     println(s)
