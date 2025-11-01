@@ -36,6 +36,7 @@ function infoc(msg...; prefix="Info: ", prefix_color=:cyan)
     println(s)
 end
 
+export infoc
 
 
 end
