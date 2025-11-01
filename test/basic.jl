@@ -1,14 +1,24 @@
 using Printf
+using OkCustomInfos
 
 
 
 # --- Helper function to capture stdout ---
 function capture_stdout(func)
-    io = IOBuffer()
-    redirect_stdout(io) do
-        func()
-    end
-    return String(take!(io))
+    # Create a pipe for redirecting stdout
+    old_stdout = stdout
+    rd, wr = redirect_stdout()
+
+    # Run the function
+    func()
+
+    # Restore stdout and read the output
+    redirect_stdout(old_stdout)
+    close(wr)
+    output = read(rd, String)
+    close(rd)
+
+    return output
 end
 
 
