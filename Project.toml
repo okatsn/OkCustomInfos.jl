@@ -1,7 +1,7 @@
 name = "OkCustomInfos"
 uuid = "f7d047fd-6333-4053-a0b9-a2f58f647aef"
 authors = ["okatsn <okatsn@gmail.com> and contributors"]
-version = "1.0.0-DEV"
+version = "0.0.1"
 
 [compat]
 julia = "1.10"
